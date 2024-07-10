@@ -1,18 +1,16 @@
-import { useState } from "react";
-import { QueryForm } from "./components/query-form/query-form";
-import { ReportTable } from "./components/report-table";
-import { IResponseWS } from "./web/interface";
+import { AttributesBox } from "./components/attributes-selection/attributes-box";
+import { ConfigureBox } from "./components/configure-selection/configure-box";
 
 function App() {
-  const [tableContent, setTableContent] = useState<IResponseWS["tableContent"]>(
-    { headers: [], rows: [] }
-  );
-
   return (
-    <>
-      <QueryForm setTableContent={setTableContent} />
-      <ReportTable content={tableContent.rows} headers={tableContent.headers} />
-    </>
+    <div style={{background: '#F5F5F5', display: 'flex', justifyContent: 'space-evenly'}}>
+        <ConfigureBox />
+        <AttributesBox />
+        {/* <ReportTable
+          content={tableContent.rows}
+          headers={tableContent.headers}
+        /> */}
+    </div>
   );
 }
 
