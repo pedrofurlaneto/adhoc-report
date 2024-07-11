@@ -50,3 +50,42 @@ export const ADHOC_MOCK: IResponseWS = {
         ]
     }
 }
+
+export const COLUMNS_MAP_BY_TABLE: Record<string, string[]> = {
+    profile: [
+      "id",
+      "first_name",
+      "last_name",
+      "full_name",
+      "city",
+      "state",
+      "languages",
+      "school",
+      "company_id",
+    ],
+    company: [
+      "id",
+      "name",
+      "description",
+      "company_size",
+      "country",
+      "state",
+      "city",
+      "zip_code",
+      "address",
+      "url",
+    ],
+    job: [
+      "id",
+      "job_id",
+      "company_id",
+      "title",
+      "description",
+      "location",
+      "med_salary",
+      "remote_allowed",
+      "work_type",
+      "application_url",
+      "expiry",
+    ],
+  };

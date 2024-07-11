@@ -18,7 +18,7 @@ export function TypeSelection({
       onClick={() => setValue(data_key)}
       style={{
         backgroundColor: value === data_key ? "#4F518C" : "#fff",
-        color: value === data_key ? "#FFF" : "#333",
+        color: value === data_key ? "#FFF" : "#333"
       }}
     >
       {icon}

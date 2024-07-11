@@ -11,17 +11,17 @@ const configureTypes = [
   {
     label: "Tables",
     key: "tables",
-    icon: <TableChartIcon />,
+    icon: <TableChartIcon sx={{fontSize: '1.75em', marginBottom: '-7.5%'}} />,
   },
   {
     label: "Filters",
     key: "filters",
-    icon: <FilterAltIcon />,
+    icon: <FilterAltIcon sx={{fontSize: '1.75em', marginBottom: '-7.5%'}} />,
   },
   {
     label: "Aggregations",
     key: "aggs",
-    icon: <SettingsIcon />,
+    icon: <SettingsIcon sx={{fontSize: '1.75em', marginBottom: '-7.5%'}} />,
   },
 ];
 
@@ -29,7 +29,7 @@ export function ConfigureBox() {
   const [configureType, setConfigureType] = useState('tables');
 
   return (
-    <Section style={{ width: "30%" }}>
+    <Section style={{ width: "30%", textAlign: 'center' }}>
       <h3>Configure</h3>
       <hr />
 

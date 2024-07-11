@@ -1,11 +1,13 @@
 import { styled } from "styled-components";
 
 export const ConfigurationSelection = styled.div`
-  width: 45%;
-  height: 15vh;
-  margin: 0 1.5% 2% 0;
+  width: 47%;
+  height: 18vh;
+  margin: 1.5% 1%;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 30px;
+
+  font-size: 1.25em;
 
   display: flex;
   flex-direction: column;
@@ -23,4 +25,7 @@ export const ConfigurationSelection = styled.div`
     cursor: default;
   }
 
+  &.svg {
+    font-size: 2em;
+  }
 `;
