@@ -28,6 +28,7 @@ export function AttributeCheckbox({
         onChange={() => {
           setChecked(!checked);
         }}
+        sx={{width: '100%', height: 'auto', boxSizing: 'border-box'}}
       />
     </AttributeSelection>
   );

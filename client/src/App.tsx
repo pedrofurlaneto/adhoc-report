@@ -4,14 +4,13 @@ import { ConfigureBox } from "./components/configure-selection/configure-box";
 import { COLUMNS_MAP_BY_TABLE } from "./mock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import CachedIcon from "@mui/icons-material/Cached";
-
-// const configurationComponentByConfigureType = {
-//   'tables': <AttributesComponent/>
-// }
+import { useState } from "react";
 
 function App() {
+  const [config, setConfig] = useState("tables");
+
   return (
-    <div style={{ background: "#F5F5F5", height: '100vh' }}>
+    <div style={{ background: "#F5F5F5", height: "100vh", color: "#333" }}>
       <div
         style={{ backgroundColor: "#907AD6", width: "100%", height: "4vh" }}
       />
@@ -42,8 +41,16 @@ function App() {
         </div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <ConfigureBox />
-        <TableAttributesComponent tables={Object.keys(COLUMNS_MAP_BY_TABLE)} />
+        <ConfigureBox configureType={config} setConfigureType={setConfig} />
+        {config === "tables" ? (
+          <TableAttributesComponent
+            tables={Object.keys(COLUMNS_MAP_BY_TABLE)}
+          />
+        ) : config === "filters" ? (
+          <></>
+        ) : config === "aggs" ? (
+          <></>
+        ) : null}
         {/* <ReportTable
           content={tableContent.rows}
           headers={tableContent.headers}

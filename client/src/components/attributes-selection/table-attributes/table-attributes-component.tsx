@@ -32,10 +32,16 @@ export function TableAttributesComponent({ tables }: { tables: string[] }) {
   return (
     <Section style={{ width: "60%" }}>
       <h3>Data Tables Attributes</h3>
-      <hr style={{margin: '1% 0 0 0' }}/>
+      <hr style={{ margin: "1% 0 0 0" }} />
 
-      <div style={{ display: "flex", justifyContent: "space-between", height: '100%' }}>
-        <AttributesBox style={{width: '45%'}}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          height: "100%",
+        }}
+      >
+        <AttributesBox style={{ width: "45%" }}>
           <h4>Tables</h4>
 
           {tables.length > 0 &&
@@ -45,18 +51,13 @@ export function TableAttributesComponent({ tables }: { tables: string[] }) {
                 value={tableName}
                 label={tableName}
                 setValue={(isChecked, value) =>
-                  handleCheckboxChanges.call(
-                    null,
-                    isChecked,
-                    value,
-                    setSelectedTables
-                  )
+                  handleCheckboxChanges(isChecked, value, setSelectedTables)
                 }
               />
             ))}
         </AttributesBox>
 
-        <AttributesBox style={{width: '53%'}}>
+        <AttributesBox style={{ width: "53%" }}>
           {selectedTables.length > 0 &&
             selectedTables.map((tableName) => {
               return (
@@ -66,10 +67,9 @@ export function TableAttributesComponent({ tables }: { tables: string[] }) {
                     <AttributeCheckbox
                       key={`${tableName}_${columnName}`}
                       value={columnName}
-                      label={columnName.replace('_', ' ')}
+                      label={columnName.replace("_", " ")}
                       setValue={(isChecked, value) =>
-                        handleCheckboxChanges.call(
-                          null,
+                        handleCheckboxChanges(
                           isChecked,
                           value,
                           setSelectedColumns

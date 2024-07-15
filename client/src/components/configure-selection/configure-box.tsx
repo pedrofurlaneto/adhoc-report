@@ -5,7 +5,6 @@ import { Wrapper } from "./style/wrapper";
 import { Section } from "../style/section";
 import { ConfigurationSelection } from "./style/selection-box-style";
 import { TypeSelection } from "./type-selection";
-import { useState } from "react";
 
 const configureTypes = [
   {
@@ -25,9 +24,7 @@ const configureTypes = [
   },
 ];
 
-export function ConfigureBox() {
-  const [configureType, setConfigureType] = useState('tables');
-
+export function ConfigureBox({setConfigureType, configureType}: {setConfigureType: (value: string) => void, configureType: string}) {
   return (
     <Section style={{ width: "30%", textAlign: 'center' }}>
       <h3>Configure</h3>
