@@ -1,8 +1,7 @@
-import { Section } from "../../style/section";
 import { useState } from "react";
-import { COLUMNS_MAP_BY_TABLE } from "../../../mock";
-import { AttributesBox } from "../style/attributes-box";
-import { AttributeCheckbox } from "../components/attributes-checkbox";
+import { COLUMNS_MAP_BY_TABLE } from "../../mock";
+import { AttributesBox } from "./style/attributes-box";
+import { AttributeCheckbox } from "./components/attributes-checkbox";
 
 export function TableAttributesComponent({ tables }: { tables: string[] }) {
   const [selectedTables, setSelectedTables] = useState<string[]>([]);
@@ -30,10 +29,6 @@ export function TableAttributesComponent({ tables }: { tables: string[] }) {
   };
 
   return (
-    <Section style={{ width: "60%" }}>
-      <h3>Data Tables Attributes</h3>
-      <hr style={{ margin: "1% 0 0 0" }} />
-
       <div
         style={{
           display: "flex",
@@ -82,6 +77,5 @@ export function TableAttributesComponent({ tables }: { tables: string[] }) {
             })}
         </AttributesBox>
       </div>
-    </Section>
   );
 }

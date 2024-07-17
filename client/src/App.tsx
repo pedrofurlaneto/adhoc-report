@@ -1,10 +1,9 @@
 import { Button } from "@mui/material";
-import { TableAttributesComponent } from "./components/attributes-selection/table-attributes/table-attributes-component";
 import { ConfigureBox } from "./components/configure-selection/configure-box";
-import { COLUMNS_MAP_BY_TABLE } from "./mock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import CachedIcon from "@mui/icons-material/Cached";
 import { useState } from "react";
+import { AttributesSection } from "./components/attributes-selection/attributes-section";
 
 function App() {
   const [config, setConfig] = useState("tables");
@@ -42,19 +41,7 @@ function App() {
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <ConfigureBox configureType={config} setConfigureType={setConfig} />
-        {config === "tables" ? (
-          <TableAttributesComponent
-            tables={Object.keys(COLUMNS_MAP_BY_TABLE)}
-          />
-        ) : config === "filters" ? (
-          <></>
-        ) : config === "aggs" ? (
-          <></>
-        ) : null}
-        {/* <ReportTable
-          content={tableContent.rows}
-          headers={tableContent.headers}
-        /> */}
+        <AttributesSection configType={config}/>
       </div>
     </div>
   );
