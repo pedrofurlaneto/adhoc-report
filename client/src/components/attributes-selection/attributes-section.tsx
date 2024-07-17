@@ -1,4 +1,3 @@
-import { COLUMNS_MAP_BY_TABLE } from "../../mock";
 import { Section } from "../style/section";
 import { FilterAttributesComponent } from "./filter-attributes-component";
 import { TableAttributesComponent } from "./table-attributes-component";
@@ -15,17 +14,12 @@ type ComponentPropsByConfigType = Record<
   }
 >;
 
-function listTables() {
-  return Object.keys(COLUMNS_MAP_BY_TABLE);
-}
 
 export function AttributesSection({ configType }: Props) {
-  const tables = listTables();
-
   const componentByConfigType: ComponentPropsByConfigType = {
     tables: {
       title: "Data Tables Attributes",
-      child: <TableAttributesComponent tables={tables} />,
+      child: <TableAttributesComponent />,
     },
     filters: {
       title: "Filter Attributes",

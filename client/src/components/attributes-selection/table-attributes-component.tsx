@@ -3,11 +3,15 @@ import { COLUMNS_MAP_BY_TABLE } from "../../mock";
 import { AttributesBox } from "./style/attributes-box";
 import { AttributeCheckbox } from "./components/attributes-checkbox";
 
-export function TableAttributesComponent({ tables }: { tables: string[] }) {
+function listTables() {
+  return Object.keys(COLUMNS_MAP_BY_TABLE);
+}
+
+export function TableAttributesComponent() {
   const [selectedTables, setSelectedTables] = useState<string[]>([]);
   const [selectedColumns, setSelectedColumns] = useState<string[]>([]);
 
-  console.log(selectedColumns);
+  const tables = listTables();
 
   const handleCheckboxChanges = (
     isChecked: boolean,
