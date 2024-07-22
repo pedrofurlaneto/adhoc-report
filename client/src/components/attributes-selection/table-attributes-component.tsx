@@ -13,6 +13,8 @@ export function TableAttributesComponent() {
 
   const tables = listTables();
 
+  console.log(selectedColumns)
+
   const handleCheckboxChanges = (
     isChecked: boolean,
     associatedTable: string,

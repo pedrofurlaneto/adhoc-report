@@ -1,6 +1,8 @@
 import { Section } from "../style/section";
 import { FilterAttributesComponent } from "./filter-attributes-component";
 import { TableAttributesComponent } from "./table-attributes-component";
+import { Option } from "../models/option";
+import { COLUMNS_MAP_BY_TABLE } from "../../mock";
 
 type Props = {
   configType: string;
@@ -14,8 +16,18 @@ type ComponentPropsByConfigType = Record<
   }
 >;
 
-
 export function AttributesSection({ configType }: Props) {
+  const columnOptions: Option[] = [];
+
+  for (const tableName in COLUMNS_MAP_BY_TABLE) {
+    for (const columnName of COLUMNS_MAP_BY_TABLE[tableName]) {
+      columnOptions.push({
+        key: columnName,
+        label: `(${tableName}) ${columnName}`
+      });  
+    }
+  }
+
   const componentByConfigType: ComponentPropsByConfigType = {
     tables: {
       title: "Data Tables Attributes",
@@ -23,7 +35,7 @@ export function AttributesSection({ configType }: Props) {
     },
     filters: {
       title: "Filter Attributes",
-      child: <FilterAttributesComponent />,
+      child: <FilterAttributesComponent columns={columnOptions} />,
     },
     aggs: {
       title: "Aggregations Attributes",
