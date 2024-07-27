@@ -4,6 +4,7 @@ import { Input } from "./components/input";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { useState } from "react";
 
 const OPERATIONS: Option[] = [
   {
@@ -30,7 +31,52 @@ const OPERATIONS: Option[] = [
 
 type Props = { columns: Option[] };
 
+type FilterSelectionProps = {
+  id: string;
+  columns: Option[];
+};
+
+function FilterSelection({ id, columns }: FilterSelectionProps) {
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ display: "inline" }}>
+          <Combobox inputLabel="Operation" options={OPERATIONS} />
+          <Combobox inputLabel="Column" options={columns} />
+        </div>
+        <Input label="Value" />
+      </div>
+      <div>
+        <IconButton aria-label="delete">
+          <DeleteIcon />
+        </IconButton>
+      </div>
+    </>
+  );
+}
+
 export function FilterAttributesComponent({ columns }: Props) {
+  const [filters, setFilters] = useState<FilterSelectionProps[]>([
+    { id: Date.now().toString(), columns },
+  ]);
+
+  const addFilterForm = () => {
+    setFilters([
+      ...filters,
+      { id: Date.now().toString(), columns },
+    ]);
+  };
+
+  const removeFilterForm = (id: string) => {
+    setFilters((values) => values.filter((value) => value.id !== id));
+  };
+
   return (
     <div
       style={{
@@ -41,28 +87,12 @@ export function FilterAttributesComponent({ columns }: Props) {
         width: "100%",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center"
-        }}
-      >
-        <div style={{ display: "inline" }}>
-          <Combobox inputLabel="Operation" options={OPERATIONS} />
-          <Combobox inputLabel="Column" options={columns} />
-        </div>
-        <Input label="Value" />
-        <div>
-          <IconButton aria-label="delete">
-            <AddCircleIcon />
-          </IconButton>
-        </div>
-      </div>
-
       <div>
-        <IconButton aria-label="delete">
-          <DeleteIcon />
+        {filters.map((prop) => (
+          <FilterSelection columns={prop.columns} id={prop.id} key={prop.id} />
+        ))}
+        <IconButton onClick={() => addFilterForm()} aria-label="add">
+          <AddCircleIcon />
         </IconButton>
       </div>
     </div>
