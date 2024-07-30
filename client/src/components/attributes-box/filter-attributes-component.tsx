@@ -5,29 +5,8 @@ import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useState } from "react";
-
-const OPERATIONS: Option[] = [
-  {
-    key: "gte",
-    label: "Greater than or equal",
-  },
-  {
-    key: "gt",
-    label: "Greater than",
-  },
-  {
-    key: "lte",
-    label: "Less than or equal",
-  },
-  {
-    key: "lt",
-    label: "Less than",
-  },
-  {
-    key: "equal",
-    label: "Equal",
-  },
-];
+import { COLUMNS_MAP_BY_TABLE } from "../../mock";
+import { filterOperations } from "./static/filter-operations";
 
 type Props = { columns: Option[] };
 
@@ -47,7 +26,7 @@ function FilterSelection({ id, columns }: FilterSelectionProps) {
         }}
       >
         <div style={{ display: "inline" }}>
-          <Combobox inputLabel="Operation" options={OPERATIONS} />
+          <Combobox inputLabel="Operation" options={filterOperations} />
           <Combobox inputLabel="Column" options={columns} />
         </div>
         <Input label="Value" />
@@ -61,21 +40,19 @@ function FilterSelection({ id, columns }: FilterSelectionProps) {
   );
 }
 
-export function FilterAttributesComponent({ columns }: Props) {
-  const [filters, setFilters] = useState<FilterSelectionProps[]>([
-    { id: Date.now().toString(), columns },
-  ]);
+export function FilterAttributesComponent() {
+  const columnOptions: Option[] = [];
 
-  const addFilterForm = () => {
-    setFilters([
-      ...filters,
-      { id: Date.now().toString(), columns },
-    ]);
-  };
+  const [filters, setFilters] = useState<FilterSelectionProps[]>();
 
-  const removeFilterForm = (id: string) => {
-    setFilters((values) => values.filter((value) => value.id !== id));
-  };
+  for (const tableName in COLUMNS_MAP_BY_TABLE) {
+    for (const columnName of COLUMNS_MAP_BY_TABLE[tableName]) {
+      columnOptions.push({
+        key: columnName,
+        label: `(${tableName}) ${columnName}`,
+      });
+    }
+  }
 
   return (
     <div
