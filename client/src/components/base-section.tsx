@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
 export const BaseSection = styled.section`
+  height: 100%;
   background-color: #fff;
   border-radius: 30px;
-  height: 65vh;
-  padding: 2%;
+  padding: 24px 13px;
 `;

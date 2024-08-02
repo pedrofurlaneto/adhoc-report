@@ -3,43 +3,44 @@ import { styled } from "styled-components";
 import { ConfigureBox } from "../components/configure-box";
 import { Header } from "../components/header";
 import { ConfigureContextProvider } from "../contexts/configure-context";
+import { ReportContextProvider } from "../contexts/report-context";
 
-const AppBody = styled.section`
-  height: 100vh;
+const AppBody = styled.main`
+  min-height: 100vh;
   background: #f5f5f5;
 `;
 
-const MainContainer = styled.section`
+const Container = styled.section`
   color: #333;
-  padding: 0 1%;
+  padding: 0 30px;
 `;
 
 const HeaderDecorator = styled.div`
   background-color: #907ad6;
-  width: 100%;
-  height: 4vh;
+  height: 25px;
 `;
 
-const ContentWrapper = styled.section`
+const Wrapper = styled.section`
   display: flex;
-  height: 100%;
   justify-content: space-between;
-  align-items: flex-end;
+  height: 70vh;
 `;
 
 function App() {
   return (
     <AppBody>
       <HeaderDecorator />
-      <MainContainer>
+      <Container>
         <Header />
-        <ContentWrapper>
-          <ConfigureContextProvider>
-            <ConfigureBox />
-            <AttributesBox />
-          </ConfigureContextProvider>
-        </ContentWrapper>
-      </MainContainer>
+        <Wrapper>
+          <ReportContextProvider>
+            <ConfigureContextProvider>
+              <ConfigureBox />
+              <AttributesBox />
+            </ConfigureContextProvider>
+          </ReportContextProvider>
+        </Wrapper>
+      </Container>
     </AppBody>
   );
 }

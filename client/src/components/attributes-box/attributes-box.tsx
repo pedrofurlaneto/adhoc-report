@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
-import { ConfigurationType } from "../../app/types/configuration-types";
+import { ConfigurationType } from "../../types/configuration-types";
 import { useConfigure } from "../../hooks/use-configure";
 import { BaseSection } from "../base-section";
-import { TableAttributesComponent } from "./table-attributes-component";
+import { TableAttributes } from "./table-attributes";
 
 const Section = styled(BaseSection) `
   width: 60%;
@@ -12,13 +12,13 @@ export function AttributesBox() {
   const { type } = useConfigure();
 
   const componentsByConfigType: Record<string, JSX.Element> = {
-    [ConfigurationType.TABLES]: <TableAttributesComponent />,
+    [ConfigurationType.TABLES]: <TableAttributes />,
     [ConfigurationType.FILTERS]: <></>,
     [ConfigurationType.AGGS]: <></>,
   };
 
   return (
-    <Section style={{ width: "60%" }}>
+    <Section>
       {componentsByConfigType[type]}
     </Section>
   );

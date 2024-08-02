@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { ConfigurationType } from "../app/types/configuration-types";
+import { ConfigurationType } from "../types/configuration-types";
 
 export const ConfigureContext = createContext({
   type: ConfigurationType.TABLES,

@@ -1,30 +1,26 @@
 import { BaseSection } from "./base-section";
-import { BoxTitle } from "./box-title";
+import { BaseTitle } from "./base-title";
 import { styled } from "styled-components";
 import { useConfigure } from "../hooks/use-configure";
 
 import TableChartIcon from "@mui/icons-material/TableChart";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { ConfigurationType } from "../app/types/configuration-types";
+import { ConfigurationType } from "../types/configuration-types";
 
 const Section = styled(BaseSection)`
-  width: 30%;
-  text-align: center;
+  width: 35%;
 `;
 
 const ConfigurationList = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 7px;
-  padding: 0;
-  justify-content: center;
-
-  list-style: none;
+  justify-items: center;
 `;
 
 interface ConfigurationItemProps {
-  selected: boolean
+  selected: boolean;
 }
 
 const ConfigurationItem = styled.li<ConfigurationItemProps>`
@@ -33,22 +29,20 @@ const ConfigurationItem = styled.li<ConfigurationItemProps>`
   justify-content: center;
   align-items: center;
 
-  width: 200px;
-  height: 185px;
+  width: 95%;
+  height: 200px;
   border-radius: 30px;
   font-size: 20px;
-  background-color: ${props => props.selected ? '#4f518c' : 'transparent'};
-  color: ${props => props.selected ? '#fff' : '#333'};
+  background-color: ${(props) => (props.selected ? "#4f518c" : "transparent")};
+  color: ${(props) => (props.selected ? "#fff" : "#333")};
   border: 1px solid;
-  border-color: ${props => props.selected ? 'transparent' : '#ddd'};
+  border-color: ${(props) => (props.selected ? "transparent" : "#ddd")};
 
   cursor: pointer;
 
   > svg {
     width: 42px;
     height: 39px;
-
-    margin-bottom: -15px;
   }
 `;
 
@@ -59,7 +53,7 @@ export function ConfigureBox() {
 
   return (
     <Section>
-      <BoxTitle title="Configure" />
+      <BaseTitle title="Configure" />
 
       <ConfigurationList>
         <ConfigurationItem
