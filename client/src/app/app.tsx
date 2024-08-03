@@ -1,4 +1,4 @@
-import { AttributesBox } from "../components/attributes-box/attributes-box";
+import { AttributesBox } from "../components/attributes-box";
 import { styled } from "styled-components";
 import { ConfigureBox } from "../components/configure-box";
 import { Header } from "../components/header";

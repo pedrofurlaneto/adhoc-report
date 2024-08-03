@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { TableList } from "../table-list";
-import { ColumnList } from "../column-list";
-import { BaseTitle } from "../base-title";
+import { TableList } from "./table-list";
+import { ColumnList } from "./column-list";
+import { BaseTitle } from "./base-title";
 
 const Container = styled.div`
   display: flex;
