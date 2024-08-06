@@ -10,12 +10,6 @@ import { InputValue } from "./input-value";
 import { useDataBaseMetadata } from "../hooks/use-database-metadata";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
 const FilterList = styled.ul`
   list-style: none;
 
@@ -23,6 +17,10 @@ const FilterList = styled.ul`
     margin-top: 40px;
   }
 `;
+
+const Container = styled(AttributeContainer)`
+  width: 100%;
+`
 
 const FilterItem = styled.li`
   display: flex;
@@ -58,13 +56,13 @@ export function FilterAttributes() {
     );
 
   return (
-    <Wrapper>
-        <BaseTitle title="Filter Attributes" />
-        <IconButton onClick={() => handleAddOnClick()} aria-label="add">
-          <AddCircleIcon htmlColor="#4f518c" />
-        </IconButton>
+    <div>
+      <BaseTitle>Filter Attributes</BaseTitle>
+      <IconButton onClick={() => handleAddOnClick()} aria-label="add">
+        <AddCircleIcon htmlColor="#4f518c" />
+      </IconButton>
 
-      <AttributeContainer>
+      <Container>
         <FilterList>
           {filters.map((filter) => (
             <FilterItem key={filter.id}>
@@ -82,7 +80,7 @@ export function FilterAttributes() {
             </FilterItem>
           ))}
         </FilterList>
-      </AttributeContainer>
-    </Wrapper>
+      </Container>
+    </div>
   );
 }

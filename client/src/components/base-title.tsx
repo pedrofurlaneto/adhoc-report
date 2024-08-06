@@ -1,12 +1,20 @@
+import { ReactNode } from "react";
 import { styled } from "styled-components";
 
-const TitleDiv = styled.div`
+type TitleAlign = "center" | "left";
+
+interface TitleDivProps {
+  children: ReactNode;
+  align: TitleAlign;
+}
+
+const TitleDiv = styled.div<TitleDivProps>`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: ${(props) => props.align === 'left' ? 'flex-start' : 'center'};
   justify-content: center;
   padding-bottom: 23px;
-  
+
   h3 {
     font-weight: 500;
     font-size: 20px;
@@ -20,13 +28,14 @@ const TitleDiv = styled.div`
 `;
 
 export interface IBaseTitleProps {
-  title: string;
+  align?: TitleAlign;
+  children: ReactNode;
 }
 
-export function BaseTitle({ title }: IBaseTitleProps) {
+export function BaseTitle({ children, align = 'left' }: IBaseTitleProps) {
   return (
-    <TitleDiv>
-      <h3>{title}</h3>
+    <TitleDiv align={align}>
+      <h3>{children}</h3>
       <hr />
     </TitleDiv>
   );

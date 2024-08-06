@@ -12,7 +12,7 @@ const Container = styled.div`
 export function TableAttributes() {
   return (
     <div>
-      <BaseTitle title="Table Data Attributes" />
+      <BaseTitle>Table Data Attributes</BaseTitle>
       <Container>
         <TableList />
         <ColumnList />

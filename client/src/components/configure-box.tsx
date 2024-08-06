@@ -53,7 +53,7 @@ export function ConfigureBox() {
 
   return (
     <Section>
-      <BaseTitle title="Configure" />
+      <BaseTitle align='center'>Configure</BaseTitle>
 
       <ConfigurationList>
         <ConfigurationItem
