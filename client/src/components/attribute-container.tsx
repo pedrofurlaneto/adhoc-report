@@ -18,4 +18,8 @@ export const AttributeContainer = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background-color: #ababab;
   }
+
+  ul + ul {
+    margin-top: 25px;
+  }
 `;

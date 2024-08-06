@@ -10,7 +10,7 @@ export const AttributesList = styled.ul`
     font-weight: normal;
   }
 
-  li {
-    margin-bottom: 3px;
+  li + li {
+    margin-top: 3px;
   }
 `;
