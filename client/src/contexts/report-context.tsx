@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
-import { Filter } from "../web/interface";
 import { Aggregation } from "../types/aggregation";
+import { Filter } from "../types/filter";
 
 export const ReportContext = createContext({
   tables: Array<string>(),
@@ -8,16 +8,12 @@ export const ReportContext = createContext({
   filters: Array<Filter>(),
   aggregation: {} as Aggregation,
   setTables: (values: string[]) => {
-    return values;
   },
   setColumns: (values: string[]) => {
-    return values;
   },
   setFilters: (values: Filter[]) => {
-    return values;
   },
   setAggregation: (value: Aggregation) => {
-    return value;
   },
 });
 
